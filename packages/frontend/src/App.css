@@ -366,6 +366,17 @@ p {
   color: var(--text-secondary);
 }
 
+/* Overdue indicator styles */
+.todo-overdue {
+  color: var(--danger-color);
+}
+
+.todo-overdue-icon {
+  margin-left: 8px;
+  font-size: 1rem;
+  display: inline;
+}
+
 .todo-actions {
   display: flex;
   gap: 8px;

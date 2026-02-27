@@ -162,4 +162,31 @@ class TodoService {
   }
 }
 
+/**
+ * Determines if a todo item is overdue
+ * @param {Object} todo - Todo object with completed and dueDate properties
+ * @returns {boolean} true if incomplete and past due date, false otherwise
+ */
+function isOverdue(todo) {
+  // Completed todos are never overdue
+  if (todo.completed) return false;
+  
+  // Todos without due dates cannot be overdue
+  if (!todo.dueDate) return false;
+  
+  // Normalize dates to midnight for date-only comparison
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  const dueDate = new Date(todo.dueDate);
+  // Handle invalid dates
+  if (isNaN(dueDate.getTime())) return false;
+  
+  dueDate.setHours(0, 0, 0, 0);
+  
+  // Due date must be strictly before today
+  return dueDate < today;
+}
+
 module.exports = TodoService;
+module.exports.isOverdue = isOverdue;

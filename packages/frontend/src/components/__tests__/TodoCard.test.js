@@ -2,6 +2,14 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import TodoCard from '../TodoCard';
 
+// Mock isOverdue utility
+jest.mock('../../services/todoService', () => ({
+  ...jest.requireActual('../../services/todoService'),
+  isOverdue: jest.fn(),
+}));
+
+import { isOverdue } from '../../services/todoService';
+
 describe('TodoCard Component', () => {
   const mockTodo = {
     id: 1,
@@ -98,5 +106,63 @@ describe('TodoCard Component', () => {
     render(<TodoCard todo={todoNoDate} {...mockHandlers} isLoading={false} />);
     
     expect(screen.queryByText(/Due:/)).not.toBeInTheDocument();
+  });
+
+  // Overdue indicator tests (User Story 1)
+  describe('Overdue Indicator', () => {
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('should display warning icon when todo is overdue', () => {
+      isOverdue.mockReturnValue(true);
+      const overdueTodo = { ...mockTodo, completed: 0, dueDate: '2026-02-20' };
+      
+      render(<TodoCard todo={overdueTodo} {...mockHandlers} isLoading={false} />);
+      
+      const alert = screen.getByRole('alert');
+      expect(alert).toBeInTheDocument();
+      expect(alert).toHaveTextContent('⚠️');
+    });
+
+    it('should apply todo-overdue CSS class when overdue', () => {
+      isOverdue.mockReturnValue(true);
+      const overdueTodo = { ...mockTodo, completed: 0, dueDate: '2026-02-20' };
+      
+      const { container } = render(<TodoCard todo={overdueTodo} {...mockHandlers} isLoading={false} />);
+      
+      const title = container.querySelector('.todo-title');
+      expect(title).toHaveClass('todo-overdue');
+    });
+
+    it('should not display warning icon when todo is not overdue', () => {
+      isOverdue.mockReturnValue(false);
+      const notOverdueTodo = { ...mockTodo, completed: 0, dueDate: '2026-03-10' };
+      
+      render(<TodoCard todo={notOverdueTodo} {...mockHandlers} isLoading={false} />);
+      
+      expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+    });
+
+    it('should have proper ARIA attributes on overdue icon', () => {
+      isOverdue.mockReturnValue(true);
+      const overdueTodo = { ...mockTodo, completed: 0, dueDate: '2026-02-20' };
+      
+      render(<TodoCard todo={overdueTodo} {...mockHandlers} isLoading={false} />);
+      
+      const alert = screen.getByRole('alert');
+      expect(alert).toHaveAttribute('aria-label', 'Overdue');
+    });
+
+    it('should display both overdue indicator and due date', () => {
+      isOverdue.mockReturnValue(true);
+      const overdueTodo = { ...mockTodo, completed: 0, dueDate: '2026-02-20' };
+      
+      render(<TodoCard todo={overdueTodo} {...mockHandlers} isLoading={false} />);
+      
+      // Both indicator and due date should be visible
+      expect(screen.getByRole('alert')).toBeInTheDocument();
+      expect(screen.getByText(/February.*20.*2026/i)).toBeInTheDocument();
+    });
   });
 });

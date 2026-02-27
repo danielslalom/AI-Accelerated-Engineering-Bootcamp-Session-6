@@ -26,9 +26,9 @@
 
 **Duration**: ~5 minutes
 
-- [ ] T001 Verify React 18 and Jest dependencies are installed in packages/frontend/package.json
-- [ ] T002 Verify Express.js and Jest dependencies are installed in packages/backend/package.json
-- [ ] T003 [P] Confirm existing design system error/danger color variable in packages/frontend/src/styles/theme.css
+- [X] T001 Verify React 18 and Jest dependencies are installed in packages/frontend/package.json
+- [X] T002 Verify Express.js and Jest dependencies are installed in packages/backend/package.json
+- [X] T003 [P] Confirm existing design system error/danger color variable in packages/frontend/src/styles/theme.css
 
 **Checkpoint**: Project structure verified - no new setup required
 
@@ -54,42 +54,42 @@
 
 > **NOTE: Write tests FIRST (Red), ensure they FAIL, then implement (Green)**
 
-- [ ] T004 [P] [US1] Write failing tests for isOverdue() utility with incomplete+past due date case in packages/frontend/src/services/__tests__/todoService.test.js
-- [ ] T005 [P] [US1] Write failing tests for isOverdue() with completed+past due date case (expect false) in packages/frontend/src/services/__tests__/todoService.test.js
-- [ ] T006 [P] [US1] Write failing tests for isOverdue() with incomplete+future due date case (expect false) in packages/frontend/src/services/__tests__/todoService.test.js
-- [ ] T007 [P] [US1] Write failing tests for isOverdue() with incomplete+today due date case (expect false) in packages/frontend/src/services/__tests__/todoService.test.js
-- [ ] T008 [P] [US1] Write failing tests for isOverdue() with null/undefined due date cases (expect false) in packages/frontend/src/services/__tests__/todoService.test.js
+- [X] T004 [P] [US1] Write failing tests for isOverdue() utility with incomplete+past due date case in packages/frontend/src/services/__tests__/todoService.test.js
+- [X] T005 [P] [US1] Write failing tests for isOverdue() with completed+past due date case (expect false) in packages/frontend/src/services/__tests__/todoService.test.js
+- [X] T006 [P] [US1] Write failing tests for isOverdue() with incomplete+future due date case (expect false) in packages/frontend/src/services/__tests__/todoService.test.js
+- [X] T007 [P] [US1] Write failing tests for isOverdue() with incomplete+today due date case (expect false) in packages/frontend/src/services/__tests__/todoService.test.js
+- [X] T008 [P] [US1] Write failing tests for isOverdue() with null/undefined due date cases (expect false) in packages/frontend/src/services/__tests__/todoService.test.js
 
 ### Implementation: Utility Function
 
-- [ ] T009 [US1] Implement isOverdue() utility function per contracts/utility-functions.md in packages/frontend/src/services/todoService.js
-- [ ] T010 [US1] Verify all isOverdue() tests pass (Green phase) by running npm test in packages/frontend
+- [X] T009 [US1] Implement isOverdue() utility function per contracts/utility-functions.md in packages/frontend/src/services/todoService.js
+- [X] T010 [US1] Verify all isOverdue() tests pass (Green phase) by running npm test in packages/frontend
 
 ### Tests for User Story 1: TodoCard Component
 
 > **NOTE: Write component tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T011 [P] [US1] Write failing test for TodoCard displaying warning icon when todo is overdue in packages/frontend/src/components/__tests__/TodoCard.test.js
-- [ ] T012 [P] [US1] Write failing test for TodoCard applying todo-overdue CSS class when overdue in packages/frontend/src/components/__tests__/TodoCard.test.js
-- [ ] T013 [P] [US1] Write failing test for TodoCard NOT displaying warning icon when not overdue in packages/frontend/src/components/__tests__/TodoCard.test.js
+- [X] T011 [P] [US1] Write failing test for TodoCard displaying warning icon when todo is overdue in packages/frontend/src/components/__tests__/TodoCard.test.js
+- [X] T012 [P] [US1] Write failing test for TodoCard applying todo-overdue CSS class when overdue in packages/frontend/src/components/__tests__/TodoCard.test.js
+- [X] T013 [P] [US1] Write failing test for TodoCard NOT displaying warning icon when not overdue in packages/frontend/src/components/__tests__/TodoCard.test.js
 
 ### Implementation: TodoCard Component
 
-- [ ] T014 [US1] Import isOverdue utility in packages/frontend/src/components/TodoCard.js
-- [ ] T015 [US1] Add conditional todo-overdue CSS class to todo title element per contracts/ui-components.md in packages/frontend/src/components/TodoCard.js
-- [ ] T016 [US1] Add conditional warning icon (⚠️) with role="alert" and aria-label="Overdue" per contracts/accessibility.md in packages/frontend/src/components/TodoCard.js
-- [ ] T017 [US1] Verify all TodoCard component tests pass by running npm test in packages/frontend
+- [X] T014 [US1] Import isOverdue utility in packages/frontend/src/components/TodoCard.js
+- [X] T015 [US1] Add conditional todo-overdue CSS class to todo title element per contracts/ui-components.md in packages/frontend/src/components/TodoCard.js
+- [X] T016 [US1] Add conditional warning icon (⚠️) with role="alert" and aria-label="Overdue" per contracts/accessibility.md in packages/frontend/src/components/TodoCard.js
+- [X] T017 [US1] Verify all TodoCard component tests pass by running npm test in packages/frontend
 
 ### Implementation: CSS Styling
 
-- [ ] T018 [P] [US1] Add .todo-overdue CSS class using var(--color-error) per contracts/ui-components.md in packages/frontend/src/App.css
-- [ ] T019 [P] [US1] Add .todo-overdue-icon CSS class with 8px margin-left per contracts/ui-components.md in packages/frontend/src/App.css
+- [X] T018 [P] [US1] Add .todo-overdue CSS class using var(--color-error) per contracts/ui-components.md in packages/frontend/src/App.css
+- [X] T019 [P] [US1] Add .todo-overdue-icon CSS class with 8px margin-left per contracts/ui-components.md in packages/frontend/src/App.css
 
 ### Tests for User Story 1: Accessibility
 
-- [ ] T020 [P] [US1] Write test verifying role="alert" attribute presence on overdue icon in packages/frontend/src/components/__tests__/TodoCard.test.js
-- [ ] T021 [P] [US1] Write test verifying aria-label="Overdue" attribute presence on overdue icon in packages/frontend/src/components/__tests__/TodoCard.test.js
-- [ ] T022 [US1] Verify accessibility tests pass by running npm test in packages/frontend
+- [X] T020 [P] [US1] Write test verifying role="alert" attribute presence on overdue icon in packages/frontend/src/components/__tests__/TodoCard.test.js
+- [X] T021 [P] [US1] Write test verifying aria-label="Overdue" attribute presence on overdue icon in packages/frontend/src/components/__tests__/TodoCard.test.js
+- [X] T022 [US1] Verify accessibility tests pass by running npm test in packages/frontend
 
 **Checkpoint**: User Story 1 complete - overdue todos display with visual indicators. Test independently by creating sample todos.
 
@@ -105,13 +105,13 @@
 
 > **NOTE: This story enhances US1 - tests verify due date visibility alongside indicator**
 
-- [ ] T023 [P] [US2] Write test verifying overdue todos display both warning icon and due date text in packages/frontend/src/components/__tests__/TodoCard.test.js
-- [ ] T024 [P] [US2] Write test verifying due date format is readable (e.g., "Feb 20, 2026") in packages/frontend/src/components/__tests__/TodoCard.test.js
+- [X] T023 [P] [US2] Write test verifying overdue todos display both warning icon and due date text in packages/frontend/src/components/__tests__/TodoCard.test.js
+- [X] T024 [P] [US2] Write test verifying due date format is readable (e.g., "Feb 20, 2026") in packages/frontend/src/components/__tests__/TodoCard.test.js
 
 ### Implementation for User Story 2
 
-- [ ] T025 [US2] Verify due date is displayed in TodoCard component layout (should already exist, confirm no conflict with overdue styling) in packages/frontend/src/components/TodoCard.js
-- [ ] T026 [US2] Verify tests pass by running npm test in packages/frontend
+- [X] T025 [US2] Verify due date is displayed in TodoCard component layout (should already exist, confirm no conflict with overdue styling) in packages/frontend/src/components/TodoCard.js
+- [X] T026 [US2] Verify tests pass by running npm test in packages/frontend
 
 **Checkpoint**: User Story 2 complete - overdue context is clear with visible due dates. Both US1 and US2 independently functional.
 
@@ -127,17 +127,17 @@
 
 > **NOTE: Integration tests verify overdue status updates on state changes**
 
-- [ ] T027 [P] [US3] Write integration test for marking overdue todo complete removes indicator in packages/frontend/src/__tests__/App.test.js
-- [ ] T028 [P] [US3] Write integration test for unmarking completed todo restores overdue indicator if still past due in packages/frontend/src/__tests__/App.test.js
-- [ ] T029 [P] [US3] Write integration test for changing overdue todo due date to future removes indicator in packages/frontend/src/__tests__/App.test.js
-- [ ] T030 [P] [US3] Write integration test for changing future due date to past adds overdue indicator in packages/frontend/src/__tests__/App.test.js
+- [X] T027 [P] [US3] Write integration test for marking overdue todo complete removes indicator in packages/frontend/src/__tests__/App.test.js
+- [X] T028 [P] [US3] Write integration test for unmarking completed todo restores overdue indicator if still past due in packages/frontend/src/__tests__/App.test.js
+- [X] T029 [P] [US3] Write integration test for changing overdue todo due date to future removes indicator in packages/frontend/src/__tests__/App.test.js
+- [X] T030 [P] [US3] Write integration test for changing future due date to past adds overdue indicator in packages/frontend/src/__tests__/App.test.js
 
 ### Implementation for User Story 3
 
-- [ ] T031 [US3] Verify TodoCard re-renders when todo.completed changes (React state should handle automatically) in packages/frontend/src/components/TodoCard.js
-- [ ] T032 [US3] Verify TodoCard re-renders when todo.dueDate changes (React state should handle automatically) in packages/frontend/src/components/TodoCard.js
-- [ ] T033 [US3] Run integration tests to verify real-time updates work by running npm test in packages/frontend
-- [ ] T034 [US3] Manually test update scenarios per quickstart.md Step 4 scenarios
+- [X] T031 [US3] Verify TodoCard re-renders when todo.completed changes (React state should handle automatically) in packages/frontend/src/components/TodoCard.js
+- [X] T032 [US3] Verify TodoCard re-renders when todo.dueDate changes (React state should handle automatically) in packages/frontend/src/components/TodoCard.js
+- [X] T033 [US3] Run integration tests to verify real-time updates work by running npm test in packages/frontend
+- [X] T034 [US3] Manually test update scenarios per quickstart.md Step 4 scenarios
 
 **Checkpoint**: User Story 3 complete - overdue status remains accurate during all todo operations. All user stories (US1, US2, US3) independently functional.
 
@@ -147,9 +147,9 @@
 
 **Purpose**: Add isOverdue() utility to backend for potential API enhancements (not required for frontend functionality)
 
-- [ ] T035 [P] Add isOverdue() utility function to packages/backend/src/services/todoService.js (same logic as frontend)
-- [ ] T036 [P] Write unit tests for backend isOverdue() in packages/backend/__tests__/app.test.js
-- [ ] T037 Verify backend tests pass by running npm test in packages/backend
+- [X] T035 [P] Add isOverdue() utility function to packages/backend/src/services/todoService.js (same logic as frontend)
+- [X] T036 [P] Write unit tests for backend isOverdue() in packages/backend/__tests__/app.test.js
+- [X] T037 Verify backend tests pass by running npm test in packages/backend
 
 **Checkpoint**: Backend utility available for future API enhancements
 
@@ -159,14 +159,14 @@
 
 **Purpose**: Final validation, documentation, and accessibility verification
 
-- [ ] T038 [P] Verify WCAG AA color contrast ratio for error/danger color using browser DevTools or axe
+- [X] T038 [P] Verify WCAG AA color contrast ratio for error/danger color using browser DevTools or axe
 - [ ] T039 [P] Test with screen reader (NVDA/JAWS/VoiceOver) per contracts/accessibility.md expected announcements
-- [ ] T040 [P] Verify keyboard navigation remains unchanged (Tab, Space, Enter work as expected)
-- [ ] T041 [P] Run all tests across frontend and backend to ensure no regressions
-- [ ] T042 [P] Validate complete quickstart.md workflow end-to-end
+- [X] T040 [P] Verify keyboard navigation remains unchanged (Tab, Space, Enter work as expected)
+- [X] T041 [P] Run all tests across frontend and backend to ensure no regressions
+- [X] T042 [P] Validate complete quickstart.md workflow end-to-end
 - [ ] T043 [P] Update project documentation if needed in docs/ folder
-- [ ] T044 Code review and refactoring for code quality per Constitution Principle I
-- [ ] T045 Final manual testing with various date scenarios (past, today, future, null)
+- [X] T044 Code review and refactoring for code quality per Constitution Principle I
+- [X] T045 Final manual testing with various date scenarios (past, today, future, null)
 
 **Checkpoint**: Feature complete, tested, accessible, and ready for deployment
 

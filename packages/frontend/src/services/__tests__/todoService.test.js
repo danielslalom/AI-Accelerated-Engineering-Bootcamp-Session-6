@@ -1,4 +1,4 @@
-import TodoService from '../todoService';
+import TodoService, { isOverdue } from '../todoService';
 
 describe('TodoService', () => {
   beforeEach(() => {
@@ -191,6 +191,54 @@ describe('TodoService', () => {
       });
 
       await expect(TodoService.deleteTodo(999)).rejects.toThrow('Todo not found');
+    });
+  });
+
+  // Tests for isOverdue utility function (User Story 1)
+  describe('isOverdue', () => {
+    beforeEach(() => {
+      // Mock current date to Feb 27, 2026
+      jest.useFakeTimers();
+      jest.setSystemTime(new Date('2026-02-27T12:00:00.000Z'));
+    });
+
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+
+    it('should return true for incomplete todo with past due date', () => {
+      const todo = { completed: false, dueDate: '2026-02-20' };
+      expect(isOverdue(todo)).toBe(true);
+    });
+
+    it('should return false for completed todo with past due date', () => {
+      const todo = { completed: true, dueDate: '2026-02-20' };
+      expect(isOverdue(todo)).toBe(false);
+    });
+
+    it('should return false for incomplete todo with future due date', () => {
+      const todo = { completed: false, dueDate: '2026-03-10' };
+      expect(isOverdue(todo)).toBe(false);
+    });
+
+    it('should return false for incomplete todo with today due date', () => {
+      const todo = { completed: false, dueDate: '2026-02-27' };
+      expect(isOverdue(todo)).toBe(false);
+    });
+
+    it('should return false for incomplete todo with no due date', () => {
+      const todo = { completed: false, dueDate: null };
+      expect(isOverdue(todo)).toBe(false);
+    });
+
+    it('should return false for incomplete todo with undefined due date', () => {
+      const todo = { completed: false, dueDate: undefined };
+      expect(isOverdue(todo)).toBe(false);
+    });
+
+    it('should return false for incomplete todo with invalid due date', () => {
+      const todo = { completed: false, dueDate: 'invalid-date' };
+      expect(isOverdue(todo)).toBe(false);
     });
   });
 });
