@@ -5,6 +5,16 @@
 **Status**: Draft  
 **Input**: User description: "Support for Overdue Todo Items - Users need a clear, visual way to identify which todos have not been completed by their due date"
 
+## Clarifications
+
+### Session 2026-02-27
+
+- Q: The spec mentions "distinctive styling" for overdue todos, but doesn't specify the exact visual treatment. What visual indicator should be used? → A: Red text color + warning/alert icon (⚠️)
+- Q: Where should the warning icon (⚠️) be positioned relative to the todo? → A: After the todo title (Todo text ⚠️)
+- Q: Should overdue todos be reordered/sorted differently in the list, or maintain their current position? → A: Keep in existing position (no reordering)
+- Q: How should the overdue indicator be communicated to screen reader users for accessibility? → A: aria-label with "Overdue" + role="alert"
+- Q: What specific red color should be used for the overdue text? → A: Use existing error/danger color from design system
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Visual Identification of Overdue Tasks (Priority: P1)
@@ -17,7 +27,7 @@ When users open their todo list, they need to immediately identify which incompl
 
 **Acceptance Scenarios**:
 
-1. **Given** a user has an incomplete todo with due date of February 20, 2026, **When** the user views their todo list on February 27, 2026, **Then** the todo displays with a clear visual indicator showing it is overdue
+1. **Given** a user has an incomplete todo with due date of February 20, 2026, **When** the user views their todo list on February 27, 2026, **Then** the todo displays with the error/danger color text and a warning icon (⚠️) immediately after the title showing it is overdue
 2. **Given** a user has a completed todo with due date of February 20, 2026, **When** the user views their todo list on February 27, 2026, **Then** the todo does NOT display as overdue (completed tasks are never overdue)
 3. **Given** a user has an incomplete todo with due date of March 5, 2026, **When** the user views their todo list on February 27, 2026, **Then** the todo displays normally without overdue styling
 4. **Given** a user has an incomplete todo with no due date set, **When** the user views their todo list, **Then** the todo displays normally without overdue styling (items without due dates cannot be overdue)
@@ -67,15 +77,17 @@ When users edit or update an overdue todo, the overdue indicator updates appropr
 ### Functional Requirements
 
 - **FR-001**: System MUST identify incomplete todos whose due date is before the current date as "overdue"
-- **FR-002**: System MUST apply distinct visual styling to overdue todos to differentiate them from non-overdue todos
+- **FR-002**: System MUST apply distinct visual styling to overdue todos: the existing design system error/danger color for the todo title text and a warning/alert icon (⚠️) displayed immediately after the todo title
 - **FR-003**: System MUST NOT mark completed todos as overdue, regardless of their due date
 - **FR-004**: System MUST NOT mark todos without a due date as overdue (null/undefined due dates are not overdue)
 - **FR-005**: System MUST update overdue status in real-time when a todo's completion status changes
 - **FR-006**: System MUST update overdue status in real-time when a todo's due date changes
 - **FR-007**: System MUST display the due date alongside the overdue indicator for context
 - **FR-008**: System MUST maintain existing todo list functionality (create, edit, delete, complete) while displaying overdue indicators
-- **FR-009**: System MUST determine overdue status based on date comparison only (not time of day)
-- **FR-010**: System MUST treat the current date as "not overdue" (only dates strictly before today are overdue)
+- **FR-009**: System MUST NOT reorder or resort the list based on overdue status (overdue todos remain in their existing position)
+- **FR-010**: System MUST determine overdue status based on date comparison only (not time of day)
+- **FR-011**: System MUST treat the current date as "not overdue" (only dates strictly before today are overdue)
+- **FR-012**: System MUST provide accessible markup for overdue indicators using aria-label="Overdue" and role="alert" attributes for screen reader compatibility
 
 ### Key Entities
 
@@ -96,6 +108,6 @@ When users edit or update an overdue todo, the overdue indicator updates appropr
 - The application already has a concept of "due date" stored as a date value (based on functional requirements document)
 - The current date is determined by the client system's date/time
 - Date comparison follows existing application timezone handling (no new timezone logic required)
-- Visual styling will follow the existing design system color palette and patterns
+- The design system includes an error/danger color that will be used for overdue styling
 - The feature applies to the existing simple list view of todos (no new views or filters introduced)
 - Users can still identify overdue items on page load or refresh if the date changes (no live clock-based updates while page is open required)
